@@ -1,1 +1,1 @@
-# Chicken-Coccidiosis-Disease-Identification
+# Poultry-Diseases-Detection-System
