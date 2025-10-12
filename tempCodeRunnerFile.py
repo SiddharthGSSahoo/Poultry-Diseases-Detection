@@ -1,1 +1,1 @@
-"Poultry-Diseases-Detection-using-CNN"
+from src.PoultryDiseasesCNN.Poultry_Logger import setup_logger
