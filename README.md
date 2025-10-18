@@ -1,11 +1,16 @@
 # Poultry-Diseases-Detection-System
 
-Hello Guys,
+Hello Guys,  
+
 This project implements an end-to-end deep learning pipeline for classifying chicken fecal images to detect potential diseases. Built with TensorFlow and Keras, the system leverages a modular MLOps architecture inspired by industry best practices, ensuring reproducibility, scalability, and maintainability.
-In this Project I am addressing 3 Diseases:
-1.Coccidiosis 
-2.New Castle Disease
-3.Salmonella
+In this Project I am addressing 3 Diseases:  
+
+1.Coccidiosis  
+
+2.New Castle Disease  
+
+3.Salmonella  
+
 or else: Healthy Obiviously...
 
 #### 🔧 Key Features:
