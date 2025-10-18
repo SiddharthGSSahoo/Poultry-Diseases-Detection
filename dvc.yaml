@@ -1,0 +1,52 @@
+stages:
+  data_ingestion:
+    cmd: python src/PoultryDiseasesCNN/pipeline/stage_01_data_ingestion.py
+    deps: 
+      - src/PoultryDiseasesCNN/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/unzipped_data/Chicken_Fecal_Images
+
+  prepare_base_model:
+    cmd: python src/PoultryDiseasesCNN/pipeline/stage_02_prepare_base_model.py
+    deps: 
+      - src/PoultryDiseasesCNN/pipeline/stage_02_prepare_base_model.py
+      - config/config.yaml
+    params:
+      - IMAGE_SIZE
+      - INCLUDE_TOP
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    outs:
+      - artifacts/prepare_base_model
+
+  training:
+    cmd: python src/PoultryDiseasesCNN/pipeline/stage_03_training.py
+    deps: 
+      - src/PoultryDiseasesCNN/pipeline/stage_03_training.py
+      - src/PoultryDiseasesCNN/components/prepare_callbacks.py
+      - config/config.yaml
+      - artifacts/data_ingestion/unzipped_data/Chicken_Fecal_Images
+      - artifacts/prepare_base_model
+    params:
+      - IMAGE_SIZE
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
+    outs:
+      - artifacts/training/model.h5
+
+  evaluation:
+    cmd: python src/PoultryDiseasesCNN/pipeline/stage_04_evaluation.py
+    deps: 
+      - src/PoultryDiseasesCNN/pipeline/stage_04_evaluation.py
+      - config/config.yaml
+      - artifacts/data_ingestion/unzipped_data/Chicken_Fecal_Images
+      - artifacts/training/model.h5
+    params:
+      - BATCH_SIZE
+      - IMAGE_SIZE
+    metrics:
+    - scores.json:
+        cache: false

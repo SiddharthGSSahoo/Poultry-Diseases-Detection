@@ -4,7 +4,7 @@ data_ingestion:
   root_dir: artifacts/data_ingestion
   source_url: "C:/Users/siddh/Desktop/Study Material/Data Science/0.Projects.py/5.Poultry Disease Detection System/Dataset.zip"
   local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion/unzipped_data
+  unzip_dir: artifacts/data_ingestion/unzipped_data/Chicken_Fecal_Images
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model
